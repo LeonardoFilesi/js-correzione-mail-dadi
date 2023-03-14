@@ -165,9 +165,15 @@ let activeItemIndex = 0;
 itemsArray[activeItemIndex].classList.add("active");
 
 
-// Gestisco il click sul bottone next
+// I bottoni
 const nextBtn = document.querySelector(".next");
+const prevBtn = document.querySelector(".prev");
+
+// Gestisco il click sul bottone next
 nextBtn.addEventListener("click", function() {
+
+    prevBtn.classList.remove("hidden");
+
     if (activeItemIndex < (itemsArray.lenght - 1)) {
 
         // rimuovere active dallo slide corrente
@@ -185,4 +191,22 @@ nextBtn.addEventListener("click", function() {
             nextBtn.classList.add("hidden");
         }
     }
+});
+
+// Gestisco il click sul bottone prev
+// Di default nascondo il bottone
+prevBtn.classList.add("hidden");
+
+prevBtn.addEventListener("click", function() {
+
+    nextBtn.classList.remove("hidden");
+
+    // rimuovere active dallo slide precedente
+    itemsArray[activeItemIndex].classList.remove("active");
+
+    // decrementare activeIndex
+    activeItemIndex--;
+
+    // aggiungere active a quello nuovo
+    itemsArray[activeItemIndex].classList.add("active");
 });
